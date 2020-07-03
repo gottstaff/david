@@ -119,15 +119,32 @@ var lyr_Contornos_8 = new ol.layer.Vector({
                 interactive: true,
                 title: '<img src="styles/legend/Contornos_8.png" /> Contornos'
             });
+var format_parcelacatastro_9 = new ol.format.GeoJSON();
+var features_parcelacatastro_9 = format_parcelacatastro_9.readFeatures(json_parcelacatastro_9, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_parcelacatastro_9 = new ol.source.Vector({
+    attributions: ' ',
+});
+jsonSource_parcelacatastro_9.addFeatures(features_parcelacatastro_9);
+var lyr_parcelacatastro_9 = new ol.layer.Vector({
+                declutter: true,
+                source:jsonSource_parcelacatastro_9, 
+                style: style_parcelacatastro_9,
+                interactive: true,
+                title: '<img src="styles/legend/parcelacatastro_9.png" /> parcela (catastro)'
+            });
 
-lyr_AMS_1956_0.setVisible(true);lyr_nacional_19801986_1.setVisible(true);lyr_SIGPAC_2002_2.setVisible(true);lyr_PNOA_max_actualidade_3.setVisible(true);lyr_Sombreado_4.setVisible(true);lyr_cuncas_hidrogrficas_5.setVisible(true);lyr_vector_6.setVisible(true);lyr_catastro_7.setVisible(true);lyr_Contornos_8.setVisible(true);
-var layersList = [lyr_AMS_1956_0,lyr_nacional_19801986_1,lyr_SIGPAC_2002_2,lyr_PNOA_max_actualidade_3,lyr_Sombreado_4,lyr_cuncas_hidrogrficas_5,lyr_vector_6,lyr_catastro_7,lyr_Contornos_8];
+lyr_AMS_1956_0.setVisible(true);lyr_nacional_19801986_1.setVisible(true);lyr_SIGPAC_2002_2.setVisible(true);lyr_PNOA_max_actualidade_3.setVisible(true);lyr_Sombreado_4.setVisible(true);lyr_cuncas_hidrogrficas_5.setVisible(true);lyr_vector_6.setVisible(true);lyr_catastro_7.setVisible(true);lyr_Contornos_8.setVisible(true);lyr_parcelacatastro_9.setVisible(true);
+var layersList = [lyr_AMS_1956_0,lyr_nacional_19801986_1,lyr_SIGPAC_2002_2,lyr_PNOA_max_actualidade_3,lyr_Sombreado_4,lyr_cuncas_hidrogrficas_5,lyr_vector_6,lyr_catastro_7,lyr_Contornos_8,lyr_parcelacatastro_9];
 lyr_vector_6.set('fieldAliases', {'fid': 'fid', });
 lyr_Contornos_8.set('fieldAliases', {'fid': 'fid', 'ID': 'ID', 'ELEV': 'ELEV', });
+lyr_parcelacatastro_9.set('fieldAliases', {'fid': 'fid', });
 lyr_vector_6.set('fieldImages', {'fid': 'TextEdit', });
 lyr_Contornos_8.set('fieldImages', {'fid': 'TextEdit', 'ID': 'Range', 'ELEV': 'TextEdit', });
+lyr_parcelacatastro_9.set('fieldImages', {'fid': 'TextEdit', });
 lyr_vector_6.set('fieldLabels', {'fid': 'no label', });
 lyr_Contornos_8.set('fieldLabels', {'fid': 'no label', 'ID': 'no label', 'ELEV': 'no label', });
-lyr_Contornos_8.on('precompose', function(evt) {
+lyr_parcelacatastro_9.set('fieldLabels', {'fid': 'no label', });
+lyr_parcelacatastro_9.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
